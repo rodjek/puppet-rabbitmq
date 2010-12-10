@@ -1,5 +1,5 @@
 define rabbitmq::server($version, $ensure='present', $bind_address="0.0.0.0", 
-	$bind_port="6163", $stomp_plugin='false') {
+	$bind_port="6163", $stomp_plugin=false) {
 
 	package { "rabbitmq-server":
 		ensure => $ensure ? {
@@ -43,7 +43,7 @@ define rabbitmq::server($version, $ensure='present', $bind_address="0.0.0.0",
 			ensure  => $ensure;
 	}
 			
-	if $stomp_plugin == "true" {
+	if $stomp_plugin {
 		realize(Rabbitmq::Plugin["rabbit_stomp"])
 		realize(Rabbitmq::Plugin["amqp_client"])
 	}
