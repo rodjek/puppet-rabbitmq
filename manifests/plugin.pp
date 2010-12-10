@@ -14,7 +14,7 @@ define rabbitmq::plugin($ensure='present', $plugin_dir='', $version) {
 			creates => $plugin_path,
 		}
 	} else {
-		file { $plugin_path,
+		file { $plugin_path:
 			ensure => absent,
 		}
 	}
