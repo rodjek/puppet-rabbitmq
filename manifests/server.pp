@@ -17,7 +17,7 @@ define rabbitmq::server($version, $ensure='present', $bind_address="0.0.0.0",
 		enable  => $ensure ? {
 			"present" => true,
 			default   => false,
-		}
+		},
 		require => File["/etc/rabbitmq/rabbitmq.conf"],
 	}
 
