@@ -11,7 +11,7 @@ define rabbitmq::plugin($ensure='present', $plugin_dir='', $version) {
 
 	if $ensure == "present" {
 		exec { "Downloading RabbitMQ plugin ${name}":
-			command => "/usr/bin/wget ${plugin_url} -O ${_plugin_dir}",
+			command => "/usr/bin/wget ${plugin_url} -O ${plugin_path}",
 			creates => $plugin_path,
 		}
 	} else {
